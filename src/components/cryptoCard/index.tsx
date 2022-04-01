@@ -17,7 +17,7 @@ const CryptoCard = ({symbol, name, market_data}: Data) => {
           <Text style={style.normal}>{symbol}</Text>
         </View>
         <View style={style.innerViewsRigth}>
-          <Text style={[style.bolderRight]}>${price_usd.toFixed(5)}</Text>
+          <Text style={[style.bolderRight]}>${price_usd.toFixed(2)}</Text>
           <View style={style.moreInnerView}>
             {changeState !== 0 && (
               <Image
@@ -42,7 +42,7 @@ const CryptoCard = ({symbol, name, market_data}: Data) => {
               ]}>
               {`${
                 market_data.percent_change_usd_last_24_hours
-                  ? market_data.percent_change_usd_last_24_hours.toFixed(5)
+                  ? market_data.percent_change_usd_last_24_hours.toFixed(2)
                   : 0
               }%`}
             </Text>
