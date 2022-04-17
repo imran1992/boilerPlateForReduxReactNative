@@ -3,20 +3,24 @@ import {Image, StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import CryptoList from '../screens/cryptoList';
 import CryptoAdder from '../screens/cryptoAdder';
+import Skia1 from '../screens/skiaCircles';
 import {images} from '../constants';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const {Navigator, Screen} = createStackNavigator();
 // #region Stack Navigation
 const MainStack = () => {
   return (
     <Navigator
-      screenOptions={{
+      screenOptions={({navigation}) => ({
         ...styles,
         headerTitleAlign: 'left',
         headerRight: () => (
-          <Image source={images.Avatar} style={styles.avatar} />
+          <TouchableOpacity onPress={() => navigation.navigate('Skia1')}>
+            <Image source={images.Avatar} style={styles.avatar} />
+          </TouchableOpacity>
         ),
-      }}>
+      })}>
       <Screen
         name="cryptoList"
         component={CryptoList}
@@ -25,6 +29,18 @@ const MainStack = () => {
       <Screen
         name="cryptoAdder"
         component={CryptoAdder}
+        options={{
+          headerTitle: '',
+          headerBackTitleVisible: true,
+          headerBackTitleStyle: {color: 'white'},
+          headerTintColor: 'white',
+          headerBackTitle: 'Back to list',
+          headerRight: () => null,
+        }}
+      />
+      <Screen
+        name="Skia1"
+        component={Skia1}
         options={{
           headerTitle: '',
           headerBackTitleVisible: true,
