@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {BannerAd, TestIds, BannerAdSize} from '@react-native-admob/admob';
 import FlatList from 'react-native-swipeable-list';
 import {Crypto} from '../../types';
 import {RootState} from '../../redux/reducer';
@@ -117,6 +118,7 @@ const CryptoListScreen = ({navigation}: any) => {
         style={styles.addBtn}>
         <Text style={styles.addBtnText}>+ Add a Cryptocurrency</Text>
       </TouchableOpacity>
+      <BannerAd size={BannerAdSize.ADAPTIVE_BANNER} unitId={TestIds.BANNER} />
     </View>
   );
 };
