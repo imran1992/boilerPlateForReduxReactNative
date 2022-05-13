@@ -1,7 +1,7 @@
 //import storage from '@react-native-async-storage/async-storage';
 import {persistReducer, persistStore} from 'redux-persist';
 import type {Storage as StorageType} from 'redux-persist';
-import {createStore, applyMiddleware} from 'redux';
+import {configureStore} from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import {MMKV} from 'react-native-mmkv';
 import reducer from './reducer';
@@ -37,7 +37,11 @@ const persistConfig: {
 // #region Redux Store
 const REDUX = () => {
   const persistedReducer = persistReducer(persistConfig, reducer);
-  const Store = createStore(persistedReducer, applyMiddleware(thunk));
+  const Store = //createStore(persistedReducer, applyMiddleware(thunk));
+    configureStore({
+      reducer: persistedReducer,
+      middleware: [thunk],
+    });
   const Persistor = persistStore(Store);
   return {Store, Persistor};
 };
