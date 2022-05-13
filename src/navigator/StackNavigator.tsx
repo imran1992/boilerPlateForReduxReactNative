@@ -22,13 +22,8 @@ const MainStack = () => {
         ),
       })}>
       <Screen
-        name="cryptoList"
-        component={CryptoList}
-        options={{title: 'CryptoTacker Pro'}}
-      />
-      <Screen
-        name="cryptoAdder"
-        component={CryptoAdder}
+        name="Skia1"
+        component={Skia1}
         options={{
           headerTitle: '',
           headerBackTitleVisible: true,
@@ -39,8 +34,13 @@ const MainStack = () => {
         }}
       />
       <Screen
-        name="Skia1"
-        component={Skia1}
+        name="cryptoList"
+        component={CryptoList}
+        options={{title: 'CryptoTacker Pro'}}
+      />
+      <Screen
+        name="cryptoAdder"
+        component={CryptoAdder}
         options={{
           headerTitle: '',
           headerBackTitleVisible: true,

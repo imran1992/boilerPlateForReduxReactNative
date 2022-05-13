@@ -3,6 +3,7 @@ import {persistReducer, persistStore} from 'redux-persist';
 import type {Storage as StorageType} from 'redux-persist';
 import {configureStore} from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 import {MMKV} from 'react-native-mmkv';
 import reducer from './reducer';
 
@@ -37,11 +38,11 @@ const persistConfig: {
 // #region Redux Store
 const REDUX = () => {
   const persistedReducer = persistReducer(persistConfig, reducer);
-  const Store = //createStore(persistedReducer, applyMiddleware(thunk));
-    configureStore({
-      reducer: persistedReducer,
-      middleware: [thunk],
-    });
+  const Store = configureStore({
+    reducer: persistedReducer,
+    middleware: [thunk, logger],
+  });
+  //createStore(persistedReducer, applyMiddleware(thunk));
   const Persistor = persistStore(Store);
   return {Store, Persistor};
 };
